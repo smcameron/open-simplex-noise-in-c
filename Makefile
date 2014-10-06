@@ -1,6 +1,6 @@
 all:	open-simplex-noise.o	open-simplex-noise-test
 
-#CFLAGS=-W -Wall -Wextra O3
+CFLAGS=-W -Wall -Wextra O3
 #CFLAGS=-W -Wall -Wextra -g
 
 open-simplex-noise-test:	open-simplex-noise-test.c open-simplex-noise.o
