@@ -926,7 +926,7 @@ double open_simplex_noise4(struct osn_context *ctx, double x, double y, double z
 	double zb = zsb + squishOffset;
 	double wb = wsb + squishOffset;
 	
-	//Compute simplectic honeycomb coordinates relative to rhombohedral origin.
+	//Compute simplectic honeycomb coordinates relative to rhombo-hypercube origin.
 	double xins = xs - xsb;
 	double yins = ys - ysb;
 	double zins = zs - zsb;
