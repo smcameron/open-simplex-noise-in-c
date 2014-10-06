@@ -71,21 +71,31 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 	int x, y;
 	double value;
 	uint32_t rgb;
-	uint32_t image[HEIGHT][WIDTH];
+	uint32_t image2d[HEIGHT][WIDTH];
+	uint32_t image3d[HEIGHT][WIDTH];
+	uint32_t image4d[HEIGHT][WIDTH];
 	struct osn_context *ctx;
 
 	open_simplex_noise(77374, &ctx);
 
 	for (y = 0; y < HEIGHT; y++) {
 		for (x = 0; x < WIDTH; x++) {
-			//value = open_simplex_noise4(ctx, (double) x / FEATURE_SIZE, (double) y / FEATURE_SIZE, 0.0, 0.0);
-			//value = open_simplex_noise2(ctx, (double) x / FEATURE_SIZE, (double) y / FEATURE_SIZE);
+			value = open_simplex_noise4(ctx, (double) x / FEATURE_SIZE, (double) y / FEATURE_SIZE, 0.0, 0.0);
+			rgb = 0x010101 * (uint32_t) ((value + 1) * 127.5);
+			image2d[y][x] = (0x0ff << 24) | (rgb);
+
+			value = open_simplex_noise2(ctx, (double) x / FEATURE_SIZE, (double) y / FEATURE_SIZE);
+			rgb = 0x010101 * (uint32_t) ((value + 1) * 127.5);
+			image3d[y][x] = (0x0ff << 24) | (rgb);
+
 			value = open_simplex_noise3(ctx, (double) x / FEATURE_SIZE, (double) y / FEATURE_SIZE, 0.0);
 			rgb = 0x010101 * (uint32_t) ((value + 1) * 127.5);
-			image[y][x] = (0x0ff << 24) | (rgb);
+			image4d[y][x] = (0x0ff << 24) | (rgb);
 		}
 	}
-	write_png_image("test.png", (unsigned char *) image, WIDTH, HEIGHT, 1);
+	write_png_image("test2d.png", (unsigned char *) image2d, WIDTH, HEIGHT, 1);
+	write_png_image("test3d.png", (unsigned char *) image3d, WIDTH, HEIGHT, 1);
+	write_png_image("test4d.png", (unsigned char *) image4d, WIDTH, HEIGHT, 1);
 	return 0;
 }
 

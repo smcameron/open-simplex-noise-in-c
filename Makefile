@@ -10,5 +10,5 @@ open-simplex-noise.o:	open-simplex-noise.h open-simplex-noise.c Makefile
 	gcc ${CFLAGS} -c open-simplex-noise.c
 
 clean:
-	rm -f open-simplex-noise.o open-simplex-noise-test test.png
+	rm -f open-simplex-noise.o open-simplex-noise-test test2d.png test3d.png test4d.png
 
