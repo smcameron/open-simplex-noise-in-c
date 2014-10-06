@@ -96,6 +96,7 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 	write_png_image("test2d.png", (unsigned char *) image2d, WIDTH, HEIGHT, 1);
 	write_png_image("test3d.png", (unsigned char *) image3d, WIDTH, HEIGHT, 1);
 	write_png_image("test4d.png", (unsigned char *) image4d, WIDTH, HEIGHT, 1);
+	open_simplex_noise_free(ctx);
 	return 0;
 }
 
