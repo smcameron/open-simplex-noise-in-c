@@ -45,7 +45,7 @@ struct osn_context {
  * Gradients for 2D. They approximate the directions to the
  * vertices of an octagon from the center.
  */
-static int8_t gradients2D[] = {
+static const int8_t gradients2D[] = {
 	 5,  2,    2,  5,
 	-5,  2,   -2,  5,
 	 5, -2,    2, -5,
@@ -58,7 +58,7 @@ static int8_t gradients2D[] = {
  * that the triangular and square facets can be inscribed inside
  * circles of the same radius.
  */
-static signed char gradients3D[] = {
+static const signed char gradients3D[] = {
 	-11,  4,  4,     -4,  11,  4,    -4,  4,  11,
 	 11,  4,  4,      4,  11,  4,     4,  4,  11,
 	-11, -4,  4,     -4, -11,  4,    -4, -4,  11,
@@ -75,7 +75,7 @@ static signed char gradients3D[] = {
  * skewed so that the tetrahedral and cubic facets can be inscribed inside
  * spheres of the same radius.
  */
-static signed char gradients4D[] = {
+static const signed char gradients4D[] = {
      3,  1,  1,  1,      1,  3,  1,  1,      1,  1,  3,  1,      1,  1,  1,  3,
     -3,  1,  1,  1,     -1,  3,  1,  1,     -1,  1,  3,  1,     -1,  1,  1,  3,
      3, -1,  1,  1,      1, -3,  1,  1,      1, -1,  3,  1,      1, -1,  1,  3,
