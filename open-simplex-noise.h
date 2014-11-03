@@ -19,6 +19,7 @@
  *   of any particular randomization library, so results
  *   will be the same when ported to other languages.
  */
+#include <stdint.h>
 
 struct osn_context;
  
