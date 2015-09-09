@@ -122,7 +122,7 @@ static double extrapolate4(struct osn_context *ctx, int xsb, int ysb, int zsb, i
 		+ gradients4D[index + 3] * dw;
 }
 	
-static __inline int fastFloor(double x) {
+STIN int fastFloor(double x) {
 	int xi = (int) x;
 	return x < xi ? xi - 1 : xi;
 }

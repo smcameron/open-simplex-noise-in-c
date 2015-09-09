@@ -21,6 +21,15 @@
  */
 #include <stdint.h>
 
+#if __STDC_VERSION__ >= 199901L
+	#define STIN static inline
+#elif MSC_VER
+	#define STIN static __inline
+#else
+	/* ANSI C doesn't have inline. */
+	#define STIN
+#endif
+
 struct osn_context;
 
 int open_simplex_noise(int64_t seed, struct osn_context **ctx);
