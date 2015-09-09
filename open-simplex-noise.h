@@ -23,7 +23,7 @@
 
 #if __STDC_VERSION__ >= 199901L
 	#define STIN static inline
-#elif MSC_VER
+#elif defined (_MSC_VER)
 	#define STIN static __inline
 #else
 	/* ANSI C doesn't have inline. */
