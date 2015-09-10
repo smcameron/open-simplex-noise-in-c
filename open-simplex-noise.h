@@ -19,15 +19,20 @@
  *   of any particular randomization library, so results
  *   will be the same when ported to other languages.
  */
-#include <stdint.h>
 
 #if __STDC_VERSION__ >= 199901L
+	#include <stdint.h>
 	#define STIN static inline
-#elif MSC_VER
+#elif defined (_MSC_VER)
+	#include <stdint.h>
 	#define STIN static __inline
-#else
-	/* ANSI C doesn't have inline. */
+#else 
+	/* ANSI C doesn't have inline or stdint.h. */
 	#define STIN
+	/* Note - these are guesses so you may need to tweak them. */
+	typedef char int8_t;
+	typedef short int int16_t;
+	typedef long long int int64_t;
 #endif
 
 struct osn_context;
