@@ -20,19 +20,15 @@
  *   will be the same when ported to other languages.
  */
 
-#if __STDC_VERSION__ >= 199901L
+#if ((__GNUC_STDC_INLINE__) || (__STDC_VERSION__ >= 199901L))
 	#include <stdint.h>
 	#define INLINE inline
-#elif defined (_MSC_VER)
+#elif (defined (_MSC_VER) || defined (__GNUC_GNU_INLINE__))
 	#include <stdint.h>
 	#define INLINE __inline
 #else 
 	/* ANSI C doesn't have inline or stdint.h. */
 	#define INLINE
-	/* Note - these are guesses so you may need to tweak them. */
-	typedef char int8_t;
-	typedef short int int16_t;
-	typedef long long int int64_t;
 #endif
 
 struct osn_context;
