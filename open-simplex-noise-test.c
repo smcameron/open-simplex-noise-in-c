@@ -1,5 +1,7 @@
 #include <stdio.h>
-#include <stdint.h>
+#if ((__STDC_VERSION__ >= 199901L) || (_MSC_VER))
+	#include <stdint.h>
+#endif
 #include <string.h>
 #include <errno.h>
 
