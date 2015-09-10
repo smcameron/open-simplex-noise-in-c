@@ -22,13 +22,13 @@
 
 #if __STDC_VERSION__ >= 199901L
 	#include <stdint.h>
-	#define STIN static inline
+	#define INLINE inline
 #elif defined (_MSC_VER)
 	#include <stdint.h>
-	#define STIN static __inline
+	#define INLINE __inline
 #else 
 	/* ANSI C doesn't have inline or stdint.h. */
-	#define STIN
+	#define INLINE
 	/* Note - these are guesses so you may need to tweak them. */
 	typedef char int8_t;
 	typedef short int int16_t;

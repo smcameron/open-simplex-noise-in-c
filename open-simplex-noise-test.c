@@ -13,21 +13,13 @@
 #define HEIGHT 512
 #define FEATURE_SIZE 24
 
-/* From https://github.com/rustyrussell/stats/blob/master/ccan/build_assert/build_assert.h
-   These will fail at compile time if the sizes of types are incorrect. */
-   
+/* From https://github.com/rustyrussell/stats/blob/master/ccan/build_assert/build_assert.h */
+
 #define BUILD_ASSERT(cond) \
 	do { (void) sizeof(char [1 - 2*!(cond)]); } while(0)
 	
 #define BUILD_ASSERT_OR_ZERO(cond) \
 	(sizeof(char [1 - 2*!(cond)]) - 1)
-
-void check_type_sizes (void)
-{
-		BUILD_ASSERT (sizeof (int8_t) == 1);
-		BUILD_ASSERT (sizeof (int16_t) == 2);
-		BUILD_ASSERT (sizeof (int64_t) == 8);
-}
 
 static int write_png_image(const char *filename, unsigned char *pixels, int w, int h, int has_alpha)
 {
@@ -86,6 +78,12 @@ cleanup1:
 
 int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 {
+   /* These will fail at compile time if the sizes of types are incorrect. */
+
+	BUILD_ASSERT (sizeof (int8_t) == 1);
+	BUILD_ASSERT (sizeof (int16_t) == 2);
+	BUILD_ASSERT (sizeof (int64_t) == 8);
+
 	int x, y;
 	double value;
 	double v0, v1, v2; /* values from different octaves. */
@@ -94,8 +92,6 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 	uint32_t image3d[HEIGHT][WIDTH];
 	uint32_t image4d[HEIGHT][WIDTH];
 	struct osn_context *ctx;
-
-	check_type_sizes();
 
 	open_simplex_noise(77374, &ctx);
 
