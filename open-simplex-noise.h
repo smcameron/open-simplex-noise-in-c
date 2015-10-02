@@ -31,6 +31,10 @@
 	#define INLINE
 #endif
 
+#ifdef __cplusplus
+	extern "C" {
+#endif
+
 struct osn_context;
 
 int open_simplex_noise(int64_t seed, struct osn_context **ctx);
@@ -39,5 +43,9 @@ int open_simplex_noise_init_perm(struct osn_context *ctx, int16_t p[], int nelem
 double open_simplex_noise2(struct osn_context *ctx, double x, double y);
 double open_simplex_noise3(struct osn_context *ctx, double x, double y, double z);
 double open_simplex_noise4(struct osn_context *ctx, double x, double y, double z, double w);
+
+#ifdef __cplusplus
+	}
+#endif
 
 #endif
