@@ -1,6 +1,9 @@
 all:	open-simplex-noise.o	open-simplex-noise-test
 
-CFLAGS=-W -Wall -Wextra -O3
+SANITIZE=
+# SANITIZE=-fsanitize=undefined
+# SANITIZE=-fsanitize=address
+CFLAGS=-W -Wall -Wextra -O3 ${SANITIZE}
 #CFLAGS=-W -Wall -Wextra -g
 
 open-simplex-noise-test:	open-simplex-noise-test.c open-simplex-noise.o
