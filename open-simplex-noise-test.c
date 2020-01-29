@@ -96,15 +96,15 @@ int main(__attribute__((unused)) int argc, __attribute__((unused)) char *argv[])
 			value = v0 * 4 / 7.0 + v1 * 2 / 7.0 + v2 * 1 / 7.0;
 #endif
 			rgb = 0x010101 * (uint32_t) ((value + 1) * 127.5);
-			image2d[y][x] = (0x0ff << 24) | (rgb);
+			image2d[y][x] = ((uint32_t) 0x0ff << 24) | (rgb);
 
 			value = open_simplex_noise2(ctx, (double) x / FEATURE_SIZE, (double) y / FEATURE_SIZE);
 			rgb = 0x010101 * (uint32_t) ((value + 1) * 127.5);
-			image3d[y][x] = (0x0ff << 24) | (rgb);
+			image3d[y][x] = ((uint32_t) 0x0ff << 24) | (rgb);
 
 			value = open_simplex_noise3(ctx, (double) x / FEATURE_SIZE, (double) y / FEATURE_SIZE, 0.0);
 			rgb = 0x010101 * (uint32_t) ((value + 1) * 127.5);
-			image4d[y][x] = (0x0ff << 24) | (rgb);
+			image4d[y][x] = ((uint32_t) 0x0ff << 24) | (rgb);
 		}
 	}
 	write_png_image("test2d.png", (unsigned char *) image2d, WIDTH, HEIGHT, 1);
