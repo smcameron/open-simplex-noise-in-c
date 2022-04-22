@@ -15,3 +15,9 @@ open-simplex-noise.o:	open-simplex-noise.h open-simplex-noise.c Makefile
 clean:
 	rm -f open-simplex-noise.o open-simplex-noise-test test2d.png test3d.png test4d.png
 
+scan-build:
+	make clean
+	rm -fr /tmp/osn-scan-build-output
+	scan-build -o /tmp/osn-scan-build-output make CC=clang
+	xdg-open /tmp/osn-scan-build-output/*/index.html
+
