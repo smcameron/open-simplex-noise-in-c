@@ -27,6 +27,7 @@ static int write_png_image(const char *filename, unsigned char *pixels, int w, i
 		fprintf(stderr, "fopen: %s:%s\n", filename, strerror(errno));
 		return -1;
 	}
+	rc = -1;
 	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 	if (!png_ptr)
 		goto cleanup1;
