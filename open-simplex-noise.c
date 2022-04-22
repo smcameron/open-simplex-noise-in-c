@@ -697,22 +697,22 @@ double open_simplex_noise3(const struct osn_context *ctx, double x, double y, do
 		if (p3 > 1) {
 			score = p3 - 1;
 			if (aScore <= bScore && aScore < score) {
-				aScore = score;
+				// aScore = score; dead store
 				aPoint = 0x06;
 				aIsFurtherSide = 1;
 			} else if (aScore > bScore && bScore < score) {
-				bScore = score;
+				// bScore = score; dead store
 				bPoint = 0x06;
 				bIsFurtherSide = 1;
 			}
 		} else {
 			score = 1 - p3;
 			if (aScore <= bScore && aScore < score) {
-				aScore = score;
+				// aScore = score; dead store
 				aPoint = 0x01;
 				aIsFurtherSide = 0;
 			} else if (aScore > bScore && bScore < score) {
-				bScore = score;
+				// bScore = score; dead store
 				bPoint = 0x01;
 				bIsFurtherSide = 0;
 			}
@@ -1464,11 +1464,11 @@ double open_simplex_noise4(const struct osn_context *ctx, double x, double y, do
 		/* Decide if (0,0,0,1) is closer. */
 		p4 = 2 - inSum + wins;
 		if (aScore >= bScore && p4 > bScore) {
-			bScore = p4;
+			// bScore = p4; dead store
 			bPoint = 0x08;
 			bIsBiggerSide = 0;
 		} else if (aScore < bScore && p4 > aScore) {
-			aScore = p4;
+			// aScore = p4; dead store
 			aPoint = 0x08;
 			aIsBiggerSide = 0;
 		}
@@ -1888,11 +1888,11 @@ double open_simplex_noise4(const struct osn_context *ctx, double x, double y, do
 		/* Decide if (1,1,1,0) is closer. */
 		p4 = 3 - inSum + wins;
 		if (aScore <= bScore && p4 < bScore) {
-			bScore = p4;
+			// bScore = p4; dead store
 			bPoint = 0x07;
 			bIsBiggerSide = 0;
 		} else if (aScore > bScore && p4 < aScore) {
-			aScore = p4;
+			// aScore = p4; dead store
 			aPoint = 0x07;
 			aIsBiggerSide = 0;
 		}
